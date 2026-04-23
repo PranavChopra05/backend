@@ -189,7 +189,12 @@ app.get("/api/v1/me", userMiddleware, async (req, res) => {
     }
     res.json({ user });
 });
-app.listen(process.env.PORT, () => {
-    console.log("server started successfully");
-});
+// Only listen when running locally (not on Vercel)
+const PORT = process.env.PORT || 3000;
+if (process.env.VERCEL !== "1") {
+    app.listen(PORT, () => {
+        console.log(`server started successfully on port ${PORT}`);
+    });
+}
+export default app;
 //# sourceMappingURL=index.js.map
