@@ -22,7 +22,7 @@ app.post("/api/v1/signup", async (req, res) => {
   const password = req.body.password;
 
   const requiredBody = z.object({
-    username: z.string().min(3).max(10),
+    username: z.string().min(3).max(25),
     password: z.string().min(6).max(20),
   });
 
